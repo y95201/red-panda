@@ -1,15 +1,35 @@
 {
 	"manifest_version": 2, //版本号，由google指定为2
-	"name": "red panda", //插件名称
+	"name": "video-down", //插件名称
 	"version": "1.0", //插件版本
 	"description": "A tool to download videos", //插件描述
+	"author": "xandone",
 	"icons": { //插件图标
-		"128": "image/icon16.png",
 		"48": "image/icon16.png",
-		"16": "image/icon16.png"
+		"128": "image/icon16.png"
 	},
 	"browser_action": {
 		"default_icon": "image/icon16.png", //插件图标
 		"default_popup": "html/test.html" //点击图标后弹出的html互动文件
-	}
+	},
+	"content_scripts": [
+		{
+			// "<all_urls>" 表示匹配所有地址
+			"matches": [
+				"<all_urls>"
+			],
+			"js": [
+				"js/content-script.js"
+			]
+		}
+	],
+	// 权限申请
+	"permissions": [
+		"tabs", // 标签
+		"http://*/*", // 可以通过executeScript或者insertCSS访问的网站
+		"https://*/*" // 可以通过executeScript或者insertCSS访问的网站
+	],
+	"web_accessible_resources": [
+		"inject.js"
+	]
 }
