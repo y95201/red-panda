@@ -19,7 +19,7 @@
 				"<all_urls>"
 			],
 			"js": [
-				"js/content-script.js"
+				"script/content-script.js"
 			]
 		}
 	],
