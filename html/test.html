@@ -6,44 +6,342 @@
  * @LastEditTime: 2023-02-14 17:00:55
 -->
 <!DOCTYPE html>
-<html>
-
-<head>
-	<meta charset="utf-8" />
-	<title>popup</title>
-	<style type="text/css">
-		#video-url-text {
-			text-align: left;
-			width: 100%;
-			height: 40px;
-			line-height: 20px;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			display: -webkit-box;
-			-webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
-		}
-
-		.down-btn {
-			margin: 10px 0;
-		}
-	</style>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <link rel="stylesheet" href="../css/all.min.css">
+        <style>
+          * {
+            margin: 0;
+            padding: 0;
+            font-size: 12px;
+          }
+      
+          a {
+            color: #3079ED;
+            text-decoration: none;
+            word-break: break-all;
+          }
+      
+          body {
+            font-family: arial, sans-serif;
+            font-size: 12px;
+            width: 565px;
+            overflow-x: hidden;
+            background: #fff;
+          }
+      
+          #tempntc {
+            position: relative;
+            left: 0;
+            right: 0;
+            min-height: 20px;
+            line-height: 18px;
+            text-align: center;
+            z-index: 11;
+            display: none;
+            padding: 0 10px;
+          }
+      
+          #player {
+            width: 490px;
+            text-align: center;
+          }
+      
+          #down {
+            display: none;
+            margin: 3px;
+            text-align: center;
+          }
+      
+          .DownCheck {
+            display: none;
+            float: left;
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 15px;
+            height: 15px;
+          }
+      
+          #medialist {
+            width: 100%;
+          }
+          #medialist td {padding-left:0.5em;padding-right: 0.5em}
+          .nameTd {
+            word-break: break-all;
+          }
+        </style>
+    <link href="../css/popup.css" rel="stylesheet">
 </head>
-
-<body style="width: 300px; min-height: 100px;">
-	<!-- <div>
-		<span>视频地址：</span>
-		<div>
-			<a id="video-url" href="#" target="_blank"><span id="video-url-text"></span></a>
-		</div>
-	</div>
-	<div>
-		<a id="down-btn-a" href="#">
-			<button class="down-btn" type="button">下载</button>
-		</a>
-	</div> -->
-	<div style=" height: 20px;width: 100%;background-color: aqua;position: fixed;bottom: 0px;">123</div>
-	<script type="text/javascript" src="script/popue.js"></script>
+<body>
+    <div class="columns is-mobile is-gapless is-centered" style="margin-bottom: 0">
+      <div class="column">
+        <div class="container">
+          <div id="tempntc" class="notification is-primary" style="min-height: 20px; display: none;"><span id="TnoResource">没有找到资源文件！</span><span id="TpopNeedPlayit">试试先开始播放要下载的视频，以帮助Cococut找到它，或点击下方“强力下载”按钮</span></div>
+          <div id="mainPanel">
+            <table id="medialist" class="table has-mobile-cards is-hoverable"><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="84319ed716593...4ffd9986e054d6320.mp4"><span>84319ed716593...4ffd9986e054d6320.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">2.37MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://u3y8v8u4.aucdn.net/library/802424/84319ed716593e3d7013d6d4ffd9986e054d6320.mp4" target="_blank" download="84319ed716593e3d7013d6d4ffd9986e054d6320.mp4" id="media-tabid551568410-0">https://u3y8v8u4.aucdn.net/library/802424/84319ed716593e3d7013d6d4ffd9986e054d6320.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="oil-show11.mp4"><span>oil-show11.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">1.08MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://video.xlivrdr.com/production/prerolls/oil-show11.mp4" target="_blank" download="oil-show11.mp4" id="media-tabid551568410-1">https://video.xlivrdr.com/production/prerolls/oil-show11.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="850x480.mp4"><span>850x480.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">3.04MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://vlcdn.tsyndicate.com/videos/f/2/7f48b175045038417d301d190796a8e08749b8/850x480.mp4" target="_blank" download="850x480.mp4" id="media-tabid551568410-2">https://vlcdn.tsyndicate.com/videos/f/2/7f48b175045038417d301d190796a8e08749b8/850x480.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1048144_video.mp4"><span>1048144_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.49MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/1/49/815327/1048144/1048144_video.mp4" target="_blank" download="1048144_video.mp4" id="media-tabid551568410-3">https://hw-cdn2.adtng.com/a7/creatives/1/49/815327/1048144/1048144_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1055279_video.mp4"><span>1055279_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.36MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/31/211/815611/1055279/1055279_video.mp4" target="_blank" download="1055279_video.mp4" id="media-tabid551568410-4">https://hw-cdn2.adtng.com/a7/creatives/31/211/815611/1055279/1055279_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1055346_video.mp4"><span>1055346_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.39MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://ht-cdn2.adtng.com/a7/creatives/1/49/815614/1055346/1055346_video.mp4" target="_blank" download="1055346_video.mp4" id="media-tabid551568410-5">https://ht-cdn2.adtng.com/a7/creatives/1/49/815614/1055346/1055346_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="bb65750ba0f15...b1f753e625f95d15c.mp4"><span>bb65750ba0f15...b1f753e625f95d15c.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">5.55MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://u3y8v8u4.aucdn.net/library/802424/bb65750ba0f1552f6fe45c1b1f753e625f95d15c.mp4" target="_blank" download="bb65750ba0f1552f6fe45c1b1f753e625f95d15c.mp4" id="media-tabid551568410-6">https://u3y8v8u4.aucdn.net/library/802424/bb65750ba0f1552f6fe45c1b1f753e625f95d15c.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1048144_video.mp4"><span>1048144_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.49MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://ht-cdn2.adtng.com/a7/creatives/1/49/815327/1048144/1048144_video.mp4" target="_blank" download="1048144_video.mp4" id="media-tabid551568410-7">https://ht-cdn2.adtng.com/a7/creatives/1/49/815327/1048144/1048144_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="4df50cdd06c89...997860cbe17a5a135.mp4"><span>4df50cdd06c89...997860cbe17a5a135.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">5.72MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://u3y8v8u4.aucdn.net/library/802424/4df50cdd06c894d6108abc5997860cbe17a5a135.mp4" target="_blank" download="4df50cdd06c894d6108abc5997860cbe17a5a135.mp4" id="media-tabid551568410-8">https://u3y8v8u4.aucdn.net/library/802424/4df50cdd06c894d6108abc5997860cbe17a5a135.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1054588_video.mp4"><span>1054588_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.36MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://ht-cdn2.adtng.com/a7/creatives/2/1554/815571/1054588/1054588_video.mp4" target="_blank" download="1054588_video.mp4" id="media-tabid551568410-9">https://ht-cdn2.adtng.com/a7/creatives/2/1554/815571/1054588/1054588_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1052764_video.mp4"><span>1052764_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.26MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/2/1554/815508/1052764/1052764_video.mp4" target="_blank" download="1052764_video.mp4" id="media-tabid551568410-10">https://hw-cdn2.adtng.com/a7/creatives/2/1554/815508/1052764/1052764_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1054588_video.mp4"><span>1054588_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.36MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/2/1554/815571/1054588/1054588_video.mp4" target="_blank" download="1054588_video.mp4" id="media-tabid551568410-11">https://hw-cdn2.adtng.com/a7/creatives/2/1554/815571/1054588/1054588_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1055001_video.mp4"><span>1055001_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.33MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://ht-cdn2.adtng.com/a7/creatives/24/124/815594/1055001/1055001_video.mp4" target="_blank" download="1055001_video.mp4" id="media-tabid551568410-12">https://ht-cdn2.adtng.com/a7/creatives/24/124/815594/1055001/1055001_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true" style="display: inline-block;"></td>
+          <td class="nameTd" title="1055629_video.mp4"><span>1055629_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.49MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/1/49/815620/1055629/1055629_video.mp4" target="_blank" download="1055629_video.mp4" id="media-tabid551568410-13">https://hw-cdn2.adtng.com/a7/creatives/1/49/815620/1055629/1055629_video.mp4</a></td></tr><tr class="file-row type-back">
+          <td class="checkbox-cell"><input type="checkbox" class="DownCheck" checked="true"></td>
+          <td class="nameTd" title="1055346_video.mp4"><span>1055346_video.mp4</span></td>
+          <td class="toolsTd">
+              <a class="vDownload" title="下载"><span class="icon" style="color:#000"><i class="fas fa-download"></i></span></a>
+              <a id="play" title="播放"><span class="icon"><i class="fas fa-play"></i></span></a>
+              <a id="copy" title="复制网址"><span class="icon"><i class="fas fa-copy"></i></span></a>
+              
+              <a id="blockDomain" title="屏蔽所有来自此域名的文件"><span class="icon"><i class="fas fa-ban"></i></span></a>
+              
+          </td>
+          <td><span class="tag is-rounded">0.39MB</span></td>
+      </tr>
+      <tr class="url" style="display:none">
+          <td colspan="4"><a href="https://hw-cdn2.adtng.com/a7/creatives/1/49/815614/1055346/1055346_video.mp4" target="_blank" download="1055346_video.mp4" id="media-tabid551568410-undefined">https://hw-cdn2.adtng.com/a7/creatives/1/49/815614/1055346/1055346_video.mp4</a></td></tr></table>
+            <div id="down" class="buttons" style="display: block;">
+              <button id="DownFile" class="button is-link"><span class="icon">
+                  <i class="fas fa-download"></i>
+                </span><span id="TdownSelected">下载所选</span></button>
+              <button id="AllCopy" class="button is-link"><span class="icon">
+                  <i class="fas fa-copy"></i>
+                </span><span id="TcopySelected">复制所选</span></button>
+              <button id="AllSelect" class="button is-link"><span class="icon">
+                  <i class="fas fa-check"></i>
+                </span><span id="TselectAll">全选</span></button>
+              <button id="ReSelect" class="button is-link"><span class="icon">
+                  <i class="fas fa-times"></i>
+                </span><span id="TrevSelected">反选</span></button>
+            </div>
+            <div class="column is-full has-text-centered">
+              <p class="is-size-7"><span id="TtryHlsLabel">下载碰到困难了或没找到需要下载的视频？</span><span id="TtryHlsNotice">强力下载</span>:</p>
+              <button id="tryHls" class="button is-link is-outlined" title="Cococut将会尝试下载或者录制视频。当前网页视频嗅探不到或下载困难时可以点我试试。 Keyboard shortcuts: Alt+Shift+D"><span class="icon">
+                  <i class="fas fa-hammer"></i>
+                </span><span id="TtryHls">强力下载</span></button>
+  
+            </div>
+            <div class="column is-full has-text-centered">
+              <p class="is-size-7"><i class="fa fa-bell" aria-hidden="true"></i><span id="serverNotice"><a href="https://www.cococut.net" target="_blank">CocoCut</a></span></p>
+              <p class="is-size-7"><span id="TpopNeedPlayit2">有些视频需要先开始播放，才能下载。</span></p>
+              <p class="is-size-7"><small id="vNumber">version:2.54</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="column is-narrow has-text-centered" style="border-left: darkgrey 1px dotted">
+            <button id="smallTryHlsBtn" class="button is-small is-dark is-fullwidth is-inverted" title="强力下载"> <span class="icon is-small">
+                <i class="fas fa-hammer"></i>
+              </span>
+            </button>
+            <button id="optionBtn" class="button is-small is-dark is-fullwidth is-inverted" title="下载设置"> <span class="icon is-small">
+                <i class="fas fa-cog"></i>
+              </span>
+            </button>
+            <a id="questionBtn" class="button is-small is-dark is-fullwidth is-inverted" href="https://cococut.net/zh_cn/feedback.html" target="_blank" title="意见反馈和常见问题"> <span class="icon is-small">
+                <i class="fas fa-question-circle"></i>
+              </span>
+            </a>
+            <a id="homePageBtn" class="button is-small is-dark is-fullwidth is-inverted" href="https://cococut.net/zh_cn/" target="_blank" title="Cococut主页"> <span class="icon is-small">
+                <i class="fas fa-home"></i>
+              </span>
+            </a>
+      </div>
+    </div>
+  
+    <script src="assets/js/jquery.min.js"></script>
+  <script type="text/javascript" src="./popup.js" defer=""></script>
+  
 </body>
-
 </html>
