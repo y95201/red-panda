@@ -3,7 +3,7 @@
  * @Author: Y95201
  * @Date: 2023-02-13 12:42:08
  * @LastEditors: Y95201
- * @LastEditTime: 2023-02-14 17:00:55
+ * @LastEditTime: 2023-02-15 13:27:09
 -->
 <!DOCTYPE html>
 <html>
@@ -30,20 +30,111 @@
 	</style>
 </head>
 
-<body style="width: 300px; min-height: 100px;">
-	<!-- <div>
-		<span>视频地址：</span>
-		<div>
-			<a id="video-url" href="#" target="_blank"><span id="video-url-text"></span></a>
+<body class="mode-media">
+	<div id="container">
+		<div id="header">
+			<input type="search" id="search-input" placeholder="Search...">
+			<div id="header-media">
+				<div class="media-back"></div>
+				<span class="active" style="display: inline-block;">Video</span><span class="">Audio</span><span
+					class="" style="display: inline-block;">Images</span>
+			</div>
+			<div class="header-tool">
+				<a class="button-scan" style="display: inline-block;"></a>
+				<a class="go-downloads"></a>
+				<a class="go-setting"></a>
+			</div>
+		</div>
+
+		<ul id="item-list"></ul>
+		<ul id="media-list" class="">
+			<li class="media-item downloaded-">
+				<div class="media-ext">mp4</div>
+				<div class="media-detail">
+					<span class="media-name">e49c79d3c98411d0e356b...512.mp4 <b
+							style="display: inline;">(1.54MB)</b></span>
+					<span class="media-alt">好看视频--轻松有收获</span>
+					<span class="media-url"
+						title="https://live-s3m.mediav.com/nativevideo/e49c79d3c98411d0e356b44c437a3572-bit_cloud512.mp4">https://live-s3m.mediav.com/nativevideo/e49c79d3c98411d0e356b44c437a3572-bit_cloud512.mp4</span>
+				</div>
+				<div class="media-download"></div>
+			</li>
+		</ul>
+
+		<script type="text/template" id="tmpl-items" class="tmpl">
+			 <li id="{{id}}" state="{{state}}">
+				<div class="item-icon">
+					<img src="icons/icons.png">
+					<div class="item-progress-bar"><i style="width:{{progress}}"></i></div>
+				</div>
+				<div class="item-info">
+					<span class="item-title">{{name}}</span>
+					<span class="item-url" title="{{url}}">{{url}}</span>
+					<span class="item-size-time">
+						<span class="item-state state-{{state}}" title="{{state}}"></span>
+						<span class="item-size">{{size}}</span>
+						<span class="item-time">{{time}}</span>
+					</span>
+				</div>
+			</li>       
+		</script>
+
+		<script type="text/template" id="tmpl-medias" class="tmpl">
+			<li class="media-item downloaded-{{downloaded}}">
+				<div class="media-ext">{{ext}}</div>
+				<div class="media-detail">
+					<span class="media-name">{{getBaseName(name,28)}} <b>({{size}})</b></span>
+					<span class="media-alt">{{title}}</span>
+					<span class="media-url" title="{{url}}">{{url}}</span>
+				</div>
+				<div class="media-download"></div>
+			</li>     
+		</script>
+
+		<div id="footer">
+			<a class="page-show"></a>
+			<ul id="page-list">
+				<li class="page-prev" title="Previous Page"><i></i></li>
+				<li class="page-origin" title="Home"><i></i></li>
+				<li class="page-next" title="Next Page"><i></i></li>
+			</ul>
+			<a class="clearup-list">
+				<div id="clearup-box">
+					<span class="clearup-btn" data="all">Clear All</span>
+					<span class="clearup-btn" data="finished">Clear Finished</span>
+					<span class="clearup-btn" data="missing">Clear File Missing</span>
+					<span class="clearup-btn" data="failure">Clear Failed</span>
+				</div>
+			</a>
+			<a class="faq-footer" title="FAQ" target="_blank" href="http://downloadplus.chromiums.org/faq.html?t=f"></a>
+			<div id="batch-download">
+				<input type="checkbox" name="batch-download"><button id="batch-down-btn">Download</button>
+				<div id="reportUrl-btn-bot" title="Report this URL">&nbsp;
+					<div id="reportUrl-box">
+						<div>
+							<div class="reportUrl-inbox">
+								<span>Report this URL. And </span>
+								<textarea placeholder="I want to say other..."></textarea><br>
+								<button>Submit</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="footer-hot">
+				<a href="http://goo.gl/2Uh6HW" target="_blank" data="like" title="我喜欢它" i18n="i_like_it"><img
+						src="icons/icon_like.png"></a>
+				<!-- <a href="http://goo.gl/RxUNsJ" target="_blank" data="app" title="Recommended App" i18n='recommend_app'><img src="icons/icon_hot.png"></a> -->
+				<a href="https://goo.gl/PBCCn5" target="_blank" data="safe" title="Chrome Safe Guard"><img
+						src="icons/icon_guard.png" style="position:relative;top:1px;"></a>
+				<a href="http://goo.gl/tds1ds" target="_blank" data="want" title="我想要其它功能"
+					i18n="want_other_function"><img src="icons/icon_more.png"></a>
+			</div>
 		</div>
 	</div>
-	<div>
-		<a id="down-btn-a" href="#">
-			<button class="down-btn" type="button">下载</button>
-		</a>
-	</div> -->
-	<div style=" height: 20px;width: 100%;background-color: aqua;position: fixed;bottom: 0px;">123</div>
-	<script type="text/javascript" src="script/popue.js"></script>
+
 </body>
+<script type="text/javascript" src="script/popue.js"></script>
 
 </html>
