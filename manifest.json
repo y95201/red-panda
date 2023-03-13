@@ -19,7 +19,7 @@
 				"<all_urls>"
 			],
 			"js": [
-				"script/content-script.js"
+				"script/popup.js"
 			]
 		}
 	],
